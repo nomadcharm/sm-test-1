@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  color: #201714;
+  background: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.mouse {
+  position: fixed;
+  z-index: 9999;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 204, 1, 0.5);
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.categories {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 155px;
+  padding-bottom: 153px;
+  width: min(100%, 1920px);
+  background: url("../img/bg-pebbles-gray.svg") left bottom no-repeat,
+    url("../img/bg-pebbles-brown.svg") right 582px top 0px no-repeat,
+    url("../img/bg-circle-yellow.svg") right 0px top 10px no-repeat;
+}
+
+.decor-green {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 76px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.categories__container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: min(100%, 1640px);
+}
+
+.decor-brown {
+  position: absolute;
+  right: 420px;
+  bottom: -62px;
+  z-index: -1;
+  transition: transform 0.3s ease-in-out;
+}
+
+.categories__title {
+  margin: 0;
+  margin-bottom: 80px;
+  position: relative;
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 48.79px;
+}
+
+.categories__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  width: 88px;
+  height: 4px;
+  border-radius: 9999px;
+  background: #FFCC01;
+}
+
+.categories__list {
+  --gap: 32px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.categories__item {
+  width: calc((100% - var(--gap) * 3) / 4);
+  height: 188px;
+}
+
+.categories__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  padding: 16px;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #79C800;
+  border-radius: 16px;
+  background-color: #ffffff4d;
+  background-repeat: no-repeat;
+  background-position: top right;
+  backdrop-filter: blur(6px);
+  box-shadow: 0px 4px 16px 0px #00000040;
+  transition: background-color 0.3s ease-in-out, background-image 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.categories__card:hover {
+  background-color: #79C80066;
+}
+
+.categories__card:hover > .bubble {
+  opacity: 1;
+}
+
+.categories__card--pesticides {
+  background-image: url("../img/card-pesticides-default.svg");
+}
+
+.categories__card--pesticides:hover {
+  background-image: url("../img/card-pesticides-hover.svg");
+}
+
+.categories__card--cultures {
+  background-image: url("../img/card-cultures-default.svg");
+}
+
+.categories__card--cultures:hover {
+  background-image: url("../img/card-cultures-hover.svg");
+}
+
+.categories__card--pests {
+  background-image: url("../img/card-pests-default.svg");
+}
+
+.categories__card--pests:hover {
+  background-image: url("../img/card-pests-hover.svg");
+}
+
+.categories__card--active-ingredients {
+  background-image: url("../img/card-ingredients-default.svg");
+}
+
+.categories__card--active-ingredients:hover {
+  background-image: url("../img/card-ingredients-hover.svg");
+}
+
+.categories__link {
+  margin-top: auto;
+}
+
+.categories__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.categories__card-title {
+  margin: 0;
+  max-width: 50%;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.18px;
+  letter-spacing: -1px;
+}
+
+.bubble {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.bubble-1 {
+  top: 20%;
+  right: 10%;
+  width: 130px;
+  height: 130px;
+  animation: moveUp 3s infinite alternate;
+}
+
+.bubble-2 {
+  top: 15%;
+  right: 35%;
+  width: 60px;
+  height: 60px;
+  animation: moveSideways 7s infinite alternate;
+}
+
+.bubble-3 {
+  top: 60%;
+  right: 35%;
+  width: 60px;
+  height: 60px;
+  animation: moveSideways 5s infinite alternate-reverse;
+}
+
+.bubble-4 {
+  top: 10%;
+  left: 25%;
+  width: 30px;
+  height: 30px;
+  animation: moveScale 5s infinite alternate-reverse;
+}
+
+.categories__card--cultures .bubble-1 {
+  animation: moveScale 5s infinite alternate-reverse;
+}
+
+.categories__card--pests .bubble-3 {
+  animation: moveScale 7s infinite alternate;
+}
+
+
+@keyframes moveUp {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100%, -70%) scale(1.8);
+  }
+}
+
+@keyframes moveSideways {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%) scale(2);
+  }
+}
+
+@keyframes moveScale {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: scale(1.6);
+  }
+
+  100% {
+    transform: translate(-200%, -100%) scale(1.2);
+  }
+}
+
+@media (max-width: 1440px) {
+  .categories {
+    background: url("../img/bg-pebbles-gray.svg") left bottom no-repeat,
+      url("../img/bg-pebbles-brown.svg") right 582px top -6px no-repeat,
+      url("../img/bg-circle-yellow.svg") right -112px top no-repeat;
+  }
+}
+
+@media (max-width: 1200px) {
+  .categories__item {
+    width: calc((100% - var(--gap) * 2) / 3);
+  }
+}
+
+@media (max-width: 1024px) {
+  .categories__item {
+    width: calc((100% - var(--gap) * 1) / 2);
+  }
+}
+
+@media (max-width: 768px) {
+  .categories__item {
+    width: 100%;
+  }
+}
